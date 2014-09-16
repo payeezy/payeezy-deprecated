@@ -40,7 +40,7 @@ class HTTP_Connection {
     }
     public function _generateCreditCardTestPayload(){
     	   $data = array(
-    			'merchant_ref'=> 'GODADDY',
+    			'merchant_ref'=> 'TestMerchant',
     			'transaction_type'=> 'authorize',
     			'method'=> 'credit_card',
     			'amount'=> '11',
