@@ -3,7 +3,7 @@ Payloads
 only credit card
 
 {
-    "merchant_ref": "GODADDY",
+    "merchant_ref": "TestMerchant",
     "transaction_type": "authorize",
     "method": "credit_card",
     "amount": "11",
@@ -21,7 +21,7 @@ only credit card
 
  CreditCard / Billing Address optional
 {
-    "merchant_ref": "GODADDY",
+    "merchant_ref": "TestMerchant",
     "transaction_type": "authorize",
     "method": "credit_card",
     "amount": "11",
@@ -43,7 +43,7 @@ only credit card
 }
 
 
-curl -i -k -X POST -uA07812-01:6Fh03TuRxJ68ypN8 -H "Content-type: application/json" -d '{ "merchant_ref": "GODADDY","transaction_type": "authorize", "method": "credit_card","amount": "11", "currency_code": "USD","credit_card": {"type": "visa","cardholder_name": "xyz", "card_number": "4788250000028291","exp_date": "1014", "cvv": "123" }}' http://demo26-test.apigee.net/firstapi-cat/transactions?apikey=6KAsv2AYMLAWRmCeqAtxSBC64LqLaCmo&apisecret=HlV57zkN4XLTdpuR
+curl -i -k -X POST -uA07812-01:6Fh03TuRxJ68ypN8 -H "Content-type: application/json" -d '{ "merchant_ref": "TestMerchant","transaction_type": "authorize", "method": "credit_card","amount": "11", "currency_code": "USD","credit_card": {"type": "visa","cardholder_name": "xyz", "card_number": "4788250000028291","exp_date": "1014", "cvv": "123" }}' http://demo26-test.apigee.net/firstapi-cat/transactions?apikey=6KAsv2AYMLAWRmCeqAtxSBC64LqLaCmo&apisecret=HlV57zkN4XLTdpuR
 
 
 3ds
