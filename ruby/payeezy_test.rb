@@ -1,0 +1,142 @@
+require 'test/unit'
+require_relative 'payeezy'
+
+class PayeezyTest < Test::Unit::TestCase
+
+  URL = 'https://api-cert.payeezy.com/v1/transactions'
+  APIKEY = 'y6pWAJNyJyjGv66IsVuWnklkKUPFbb0a'
+  APISECRET = '09730a91f4f055dd5d3878099644f2f60bf0a4421485f20af72076bbb0b41e96'
+  TOKEN = 'fdoa-a480ce8951daa73262734cf102641994c1e55e7cdf4c02b6'
+
+
+  def test_authorize
+    puts '----------------------------execute authorize-----------------------------------------------'
+    puts 'Request ...'
+    puts primary_tx_payload
+    response = Payeezy.new(init_options).transact(:authorize,primary_tx_payload)
+    puts 'Response ...'
+    puts response
+    if assert_equal('approved', response['transaction_status'] )
+      puts 'Authorize test succeeded'
+    else
+      puts 'Authorize test failed'
+    end
+  end
+
+  def test_capture
+    puts '----------------------------execute capture -----------------------------------------------'
+    # first do an auth, followed by the capture
+    response = Payeezy.new(init_options).transact(:authorize,primary_tx_payload)
+    if assert_equal('approved', response['transaction_status'] )
+      puts 'Request ...'
+      puts secondary_tx_payload(response)
+      secondary_response = Payeezy.new(init_options).transact(:capture,secondary_tx_payload(response))
+      puts 'Response ...'
+      puts secondary_response
+      if assert_equal('approved', secondary_response['transaction_status'] )
+        puts 'capture test succeeded'
+      else
+        puts 'capture test failed'
+      end
+    else
+      puts 'Initial authorize for capture failed'
+    end
+  end
+
+  def test_purchase
+    puts '----------------------------execute purchase-----------------------------------------------'
+    puts 'Request ...'
+    puts primary_tx_payload
+    response = Payeezy.new(init_options).transact(:purchase,primary_tx_payload)
+    puts 'Response ...'
+    puts response
+    if assert_equal('approved', response['transaction_status'] )
+      puts 'Purchase test succeeded'
+    else
+      puts 'Purchase test failed'
+    end
+  end
+
+  def test_refund
+    puts '----------------------------execute refund -----------------------------------------------'
+    # first do a purchase, followed by the refund
+    response = Payeezy.new(init_options).transact(:purchase,primary_tx_payload)
+    if assert_equal('approved', response['transaction_status'] )
+      puts 'Request ...'
+      puts secondary_tx_payload(response)
+      secondary_response = Payeezy.new(init_options).transact(:refund,secondary_tx_payload(response))
+      puts 'Response ...'
+      puts secondary_response
+      if assert_equal('approved', secondary_response['transaction_status'] )
+        puts 'refund test succeeded'
+      else
+        puts 'refund test failed'
+      end
+    else
+      puts 'Initial purchase for refund failed'
+    end
+  end
+
+  def test_void
+    puts '----------------------------execute void -----------------------------------------------'
+    # first do an auth, followed by the void
+    response = Payeezy.new(init_options).transact(:authorize,primary_tx_payload)
+    if assert_equal('approved', response['transaction_status'] )
+      puts 'Request ...'
+      puts secondary_tx_payload(response)
+      secondary_response = Payeezy.new(init_options).transact(:void,secondary_tx_payload(response))
+      puts 'Response ...'
+      puts secondary_response
+      if assert_equal('approved', secondary_response['transaction_status'] )
+        puts 'void test succeeded'
+      else
+        puts 'void test failed'
+      end
+    else
+      puts 'Initial authorize for void failed'
+    end
+  end
+
+  private
+
+  def init_options
+    options = {}
+    options[:url] = URL
+    options[:apikey] = APIKEY
+    options[:apisecret] = APISECRET
+    options[:token] = TOKEN
+
+    options
+  end
+
+  def primary_tx_payload
+    credit_card = {}
+    payload = {}
+    payload[:merchant_ref] = 'Astonishing-Sale'
+    payload[:amount]='1299'
+    payload[:currency_code]='USD'
+    payload[:method]='credit_card'
+
+    credit_card[:type] = 'visa'
+    credit_card[:cardholder_name] = 'John Smith'
+    credit_card[:card_number] = '4788250000028291'
+    credit_card[:exp_date] = '1014'
+    credit_card[:cvv] = '123'
+    payload[:credit_card] = credit_card
+
+    payload
+  end
+
+  def secondary_tx_payload(response)
+    payload = {}
+    payload[:merchant_ref] = 'Astonishing-Sale'
+    payload[:transaction_tag] = response['transaction_tag']
+    payload[:method]=response['method']
+    payload[:amount]=response['amount']
+    payload[:currency_code]=response['currency']
+    payload[:transaction_id] = response['transaction_id']
+
+    payload
+  end
+
+end
