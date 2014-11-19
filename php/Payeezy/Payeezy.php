@@ -171,13 +171,13 @@ class Payeezy
 
     $nonce = strval(hexdec(bin2hex(openssl_random_pseudo_bytes(4, $cstrong))));
 
-    $timestamp = strval(time());
+    $timestamp = strval(time()*1000); //time stamp in milli seconds
 
-    $data = self::$apiKey + $nonce + $timestamp + self::$merchantToken + $payload;
+    $data = self::$apiKey . $nonce . $timestamp . self::$merchantToken . $payload;
 
     $hashAlgorithm = "sha256";
-    // HMAC Hash in hex
-    $hmac = hash_hmac ( $hashAlgorithm , $data , self::$apiSecret, false );
+ 
+    $hmac = hash_hmac ( $hashAlgorithm , $data , self::$apiSecret, false );    // HMAC Hash in hex
 
     $authorization = base64_encode($hmac);
 

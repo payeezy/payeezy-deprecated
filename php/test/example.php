@@ -1,6 +1,7 @@
 
 <!DOCTYPE HTML> 
 <html>
+<title>Payeezy&#8482; PHP Test Example </title>
 <head>
 <style>
 .error {color: #FF0000;}
@@ -256,10 +257,5 @@ function test_input($data) {
 </div>
   <div class="col-md-3"></div>
 </div>
-
-
-
-
-
 </body>
 </html>
