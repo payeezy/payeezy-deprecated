@@ -226,8 +226,9 @@ function test_input($data) {
   <label class="decription">Card Type</label><br>
   <input type="radio" name="card_type" <?php if (isset($card_type) && $card_type=="visa") echo "checked";?>  value="visa">  Visa
   <br><input type="radio" name="card_type" <?php if (isset($card_type) && $card_type=="mastercard") echo "checked";?>  value="mastercard">  Master Card
-  <br><input type="radio" name="card_type" <?php if (isset($card_type) && $card_type=="american_express") echo "checked";?>  value="american_express">  American Express
-  <br><br>
+  <br><input type="radio" name="card_type" <?php if (isset($card_type) && $card_type=="american express") echo "checked";?>  value="american express">  American Express
+  <br><input type="radio" name="card_type" <?php if (isset($card_type) && $card_type=="discover") echo "checked";?>  value="discover">  Discover
+<br><br>
 
   <label class="decription">CVV</label> <br>
   <input type="text" name="card_cvv" value="<?php echo $card_cvv;?>" style="margin-top: -1%;">
