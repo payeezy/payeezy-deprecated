@@ -15,9 +15,7 @@ Source available in the /src folder.
 
 Authorize, Purchase, Capture, Void, Refund and Split Shipment tests are located in the /tests folder
 
-Execute: 
-
-phpunit tests
+Execute with: 'phpunit tests'
 
 
 ## Contributing
