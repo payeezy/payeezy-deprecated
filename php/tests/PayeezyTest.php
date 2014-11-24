@@ -156,16 +156,16 @@ class PayeezyTest extends PHPUnit_Framework_TestCase
         // in this example, the shipment is split into 2 txns
         $split_amount = ($primaryTxResponse_JSON->amount)/2;
 
-        // the first shipment is sent out .. 01/99 , since the total no. of shipments is unknown
+        // the first shipment is sent out .. split shipmant value is 01/99 since the total no. of shipments is unknown
         $secondaryTxPayload = $this->setSecondaryTxPayload($primaryTxResponse_JSON->transaction_id
                                                             ,$primaryTxResponse_JSON->transaction_tag
                                                             ,$split_amount
                                                             ,"01/99");
 
-        // the second shipment is sent out. It is also the final shipment .. 02/02
         $secondaryTxResponse_JSON = json_decode(self::$payeezy->split_shipment($secondaryTxPayload));
         $this->assertEquals($secondaryTxResponse_JSON->transaction_status,"approved");
-
+        
+		// the second shipment is sent out. It is also the final shipment .. therefore 02/02
         $secondaryTxPayload = $this->setSecondaryTxPayload($primaryTxResponse_JSON->transaction_id
                                                             ,$primaryTxResponse_JSON->transaction_tag
                                                             ,$split_amount
