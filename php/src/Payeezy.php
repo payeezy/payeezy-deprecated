@@ -109,8 +109,10 @@ class Payeezy
 
     $transaction_type = strtolower(func_get_arg(1));
 
+
+
     $data = "";
-    if($transaction_type == ("authorize" || "purchase"))
+    if($transaction_type == "authorize" || $transaction_type == "purchase")
     {
       $data = array(
               'merchant_ref'=> $args['merchant_ref'],
@@ -130,11 +132,12 @@ class Payeezy
       self::$url = self::$baseURL;
     }else{
 
+
       self::$url = self::$baseURL . '/' . $args['transaction_id'];
+
 
       if($transaction_type == "split")
       {
-
         $data = array(
           'merchant_ref'=> $args['merchant_ref'],
           'transaction_type'=> $transaction_type,
@@ -180,6 +183,7 @@ class Payeezy
     $hmac = hash_hmac ( $hashAlgorithm , $data , self::$apiSecret, false );    // HMAC Hash in hex
 
     $authorization = base64_encode($hmac);
+	
 
     return array(
             'authorization' => $authorization,
@@ -236,6 +240,7 @@ class Payeezy
     curl_setopt($request, CURLOPT_POSTFIELDS, $payload);
     curl_setopt($request, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($request, CURLOPT_HEADER, false);
+	//curl_setopt($request, CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt($request, CURLOPT_HTTPHEADER, array(
       'Content-Type: application/json', 
       'apikey:'.strval(self::$apiKey), 
@@ -246,13 +251,20 @@ class Payeezy
     ));
 
     $response = curl_exec($request);
+	
+	if (FALSE === $response)
+        echo curl_error($request);
+
+    $httpcode = curl_getinfo($request, CURLINFO_HTTP_CODE);
     curl_close($request);
-    $httpcode = curl_getinfo($response, CURLINFO_HTTP_CODE);
+	
     return $response;
   }
 
   /**
    * Payeezy
+
+
    * 
    * Authorize Transaction
    */
@@ -260,7 +272,9 @@ class Payeezy
   public function authorize($args = array())
   {
       $payload = $this->getPayload($args, "authorize");
+
       $headerArray = $this->hmacAuthorizationToken($payload);
+
       return $this->postTransaction($payload, $headerArray);
   }
 
