@@ -18,7 +18,9 @@ Or install it yourself as:
 
 ## Usage
 
-Test cases can be run with 'bundle exec rake spec'
+Run the specs using 'bundle exec rake spec'
+
+Test cases can be run with 'bundle exec rake test'
 
 ## Contributing
 

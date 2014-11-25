@@ -4,7 +4,7 @@ This code sample showcases integration of the Payeezy API in PHP.
 
 ## Pre-requisites
 
-In addition to having PHP installed, you will need the PHPUnit framework to execute the tests.
+In addition to having PHP installed (5.3 and above) , you will need the PHPUnit framework to execute the tests.
 
 Download PHPUnit from https://phpunit.de/
 

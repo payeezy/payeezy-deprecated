@@ -21,7 +21,8 @@ module Payeezy
 
     def generate_hmac(nonce, current_timestamp, payload)
       message = @apikey + nonce.to_s + current_timestamp.to_s + @token + payload
-      hash = Base64.encode64(bin_to_hex(OpenSSL::HMAC.digest('sha256', @apisecret, message)))
+      hash = Base64.strict_encode64(bin_to_hex(OpenSSL::HMAC.digest('sha256', @apisecret, message)))
+      hash
     end
 
     def bin_to_hex(s)
@@ -43,7 +44,7 @@ module Payeezy
 
     def commit(action, params)
       url = @url
-      if action == :capture || action == :void || action == :refund
+      if action == :capture || action == :void || action == :refund || action == :split
         url = url + '/' + params[:transaction_id]
         params.delete(:transaction_id)
       end
@@ -54,11 +55,9 @@ module Payeezy
     def call_rest(url, data, headers)
       rest_resource = RestClient::Resource.new(url)
       raw_response = response = {}
-      success = false
       begin
         raw_response = rest_resource.post data, headers
         response = parse(raw_response)
-        success = !response.key?('Error')
       rescue => e
         raw_response = e.response
         response = response_error(raw_response)
@@ -72,7 +71,7 @@ module Payeezy
     def handle_message(response, success)
       if success
         response['transaction_status']
-      elsif (response.key?('Error'))
+      elsif response.key?('Error')
         response['Error'].map { |_, messages| messages }.join('. ')
       else
         response.inspect

@@ -254,7 +254,7 @@ class Payeezy
 	
 	if (FALSE === $response)
         echo curl_error($request);
-      
+		
     //$httpcode = curl_getinfo($request, CURLINFO_HTTP_CODE);
     curl_close($request);
 	
