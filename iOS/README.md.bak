@@ -1,0 +1,50 @@
+# Payeezy SDK for iOS
+
+Payeezy SDK consist of 
+•	Platform specific Client Library such as IOS library(Apple app/Apple pay ), JS library, Java Library 
+•	Rest API 
+•	Server language specific components such Java, cURL, php, python, ruby and  nodeJS 
+•	Tools & RESOURCES
+•	Documentation 
+
+Rest APIs and documentation
+API documentation: https://developer.payeezy.com/payeezy-api-reference/apis
+Tools & RESOURCES
+Download and build 
+•	Github – For Payeezy source code downloads – visit https://github.com/payeezy/payeezy 
+•	XCode -  For Apple Pay and IOS apps – for more information visit https://developer.apple.com/xcode/ 
+•	Eclipse – For client library integration and development  – for more information visit https://eclipse.org/
+•	IntelliJ – For client library integration and development – for more information please visit https://www.jetbrains.com/idea/
+•	JDK 1.6 and above  - For compiling java code – for more information please visit http://www.oracle.com/technetwork/java/javase/downloads/index.html
+•	Text editor - if you don't have one already, you may want one for editing properties file. A few options: Atom, Sublime Text, Textmate, Brackets.
+Package Managers
+
+•	Maven – For build and test – for more information please visit http://maven.apache.org/
+•	Cocoapods - CocoaPods is the dependency manager for Objective-C projects – for more information Pl visit http://cocoapods.org/
+•	Pip - pip is a package management system used to install and manage software packages written in Python. If your system doesn't have pip, you can also use easy_install 
+•	Gem - RubyGems is a package management framework for Ruby. For more information Pl visit  http://guides.rubygems.org/rubygems-basics/
+•	npm - is the package manager for javascript, nodeJS etc. For more information pl visit https://www.npmjs.com/ 
+
+
+## Contributing
+
+1. Fork it 
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create a new Pull Request  
+
+## Feedback
+
+Payeezy IOS SDK is in active development. We appreciate the time you take to try it out and welcome your feedback!
+Here are a few ways to get in touch:
+* [GitHub Issues](https://github.com/payeezy/payeezy/issues) - For generally applicable issues and feedback
+* support@payeezy.com - for personal support at any phase of integration
+* [1.855.799.0790](tel:+18557990790)  - for personal support in real time 
+
+## Terms of Use
+
+Terms and conditions for using Payeezy IOS SDK: Please see [Payeezy Terms & conditions](https://developer.payeezy.com/terms-use)
+ 
+### License
+The Payeezy IOS SDK is open source and available under the MIT license. See the LICENSE file for more info.
