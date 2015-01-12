@@ -1,51 +1,32 @@
-# Payeezy Client/API Sample code for Java Programming language 
-Sample code for Java Programming language 
+# Payeezy SDK for iOS
 
-Maven dependencies 
-<dependencies>
-	<dependency>
-		<groupId>org.springframework</groupId>
-		<artifactId>spring-web</artifactId>
-		<version>${spring-version}</version>
-	</dependency>
-	<dependency>
-		<groupId>org.springframework</groupId>
-		<artifactId>spring-test</artifactId>
-		<version>2.5</version>
-	</dependency>  	
-  	<dependency>
-  		<groupId>org.slf4j</groupId>
-  		<artifactId>slf4j-api</artifactId>
-  		<version>1.6.4</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>org.slf4j</groupId>
-  		<artifactId>slf4j-log4j12</artifactId>
-  		<version>1.6.4</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>org.springframework</groupId>
-  		<artifactId>spring-test</artifactId>
-  		<version>3.2.8.RELEASE</version>
-  	</dependency>
-  	<dependency>
-		<groupId>org.codehaus.jackson</groupId>
-		<artifactId>jackson-mapper-asl</artifactId>
-		<version>1.8.8</version>
-    </dependency>
-    <dependency>
-		<groupId>org.apache.httpcomponents</groupId>
-		<artifactId>httpclient</artifactId>
-		<version>4.3.2</version>
-    </dependency>
-    <dependency>
-  		<groupId>junit</groupId>
-  		<artifactId>junit</artifactId>
-  		<version>4.10</version>
-  		<scope>test</scope>
-     </dependency>
- </dependencies>
-  
+Payeezy SDK consist of 
+*	Platform specific Client Library such as IOS library(Apple app/Apple pay ), JS library, Java Library 
+*	Rest API 
+*	Server language specific components such Java, cURL, php, python, ruby and  nodeJS 
+*	Tools & RESOURCES
+*	Documentation 
+
+
+Rest APIs and documentation
+API documentation: [https://developer.payeezy.com/payeezy-api-reference/apis ] (https://developer.payeezy.com/payeezy-api-reference/apis)
+
+Tools & RESOURCES
+Download and build 
+*	Github – For Payeezy source code downloads – visit [https://github.com/payeezy/payeezy](https://github.com/payeezy/payeezy )
+*	XCode -  For Apple Pay and IOS apps – for more information visit [https://developer.apple.com/xcode/](https://developer.apple.com/xcode/) 
+*	Eclipse – For client library integration and development  – for more information visit [https://eclipse.org/](https://eclipse.org/)
+*	IntelliJ – For client library integration and development – for more information please visit [https://www.jetbrains.com/idea/](https://www.jetbrains.com/idea/)
+*	JDK 1.6 and above  - For compiling java code – for more information please visit [http://www.oracle.com/technetwork/java/javase/downloads/index.html](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+*	Text editor - if you don't have one already, you may want one for editing properties file. A few options: Atom, Sublime Text, Textmate, Brackets.
+Package Managers
+
+•	Maven – For build and test – for more information please visit [http://maven.apache.org/](http://maven.apache.org/)
+•	Cocoapods - CocoaPods is the dependency manager for Objective-C projects – for more information Pl visit [http://cocoapods.org/](http://cocoapods.org/)
+•	Pip - pip is a package management system used to install and manage software packages written in Python. If your system doesn't have pip, you can also use easy_install 
+•	Gem - RubyGems is a package management framework for Ruby. For more information Pl visit  [http://guides.rubygems.org/rubygems-basics/](http://guides.rubygems.org/rubygems-basics/)
+•	npm - is the package manager for javascript, nodeJS etc. For more information pl visit [https://www.npmjs.com/](https://www.npmjs.com/) 
+
 
 ## Contributing
 
