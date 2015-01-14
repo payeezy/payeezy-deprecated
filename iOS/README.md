@@ -2,6 +2,11 @@
 
 The Payeezy iOS SDK support secure In-App payments via Apple's Apple Pay technology.
 
+## Minimum system requirements
+
+* Xcode 4.5 or greater for compiling
+* OS X 10.7 for compiling and running
+
 ## Contributing
 
 1. Fork it 
@@ -9,6 +14,7 @@ The Payeezy iOS SDK support secure In-App payments via Apple's Apple Pay technol
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request  
+
 
 ## Feedback
 
