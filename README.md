@@ -7,6 +7,7 @@ Payeezy SDK consist of
 *	Tools & RESOURCES
 *	Documentation 
 
+# Payeezy SDK (new release)
 Please refer [new version of SDK/API] (https://developer.payeezy.com/integration)
 
 Rest APIs and documentation
